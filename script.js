@@ -11,12 +11,15 @@ class Calculator {
     this.operation = undefined;
   }
   delete() {}
+
   appendNumber(number) {
-    this.currentOperand = number;
+    this.currentOperand = this.currentOperand.toString() + number.toString();
   }
-  appendOperation(operation) {}
+  chooseOperation(operation) {}
+
   compute() {}
-  updateDisplay() {
+
+  updateDisplay(number) {
     this.currentOperandTextElement.innerHTML = this.currentOperand;
   }
 }
@@ -38,7 +41,9 @@ const calculator = new Calculator(
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    currentOperandTextElement.innerHTML = button.innerHTML;
-    //   calculator.appendNumber(button.innerHTML);
+    calculator.appendNumber(button.innerHTML);
+    calculator.updateDisplay(button.innerHTML);
   });
 });
+
+clearButton.addEventListener("click", calculator.clear());
