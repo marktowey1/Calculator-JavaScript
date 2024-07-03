@@ -66,7 +66,7 @@ class Calculator {
 
 const numberButtons = document.querySelectorAll(".numbers");
 const operationButtons = document.querySelectorAll(".operations");
-const equalsButtons = document.querySelector("#equals");
+const equalsButton = document.querySelector("#equals");
 const clearButton = document.querySelector("#clear");
 const deleteButton = document.querySelector("#delete");
 const previousOperandTextElement = document.querySelector(
@@ -93,7 +93,12 @@ operationButtons.forEach((button) => {
   });
 });
 
-equalsButtons.addEventListener("click", () => {
+equalsButton.addEventListener("click", () => {
   calculator.compute();
+  calculator.updateDisplay();
+});
+
+clearButton.addEventListener("click", () => {
+  calculator.clear();
   calculator.updateDisplay();
 });
