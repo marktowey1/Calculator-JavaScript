@@ -20,12 +20,22 @@ class Calculator {
     }
   }
 
-  chooseOperation(operation) {}
+  chooseOperation(operation) {
+    if (this.currentOperand === "") return;
+    if (this.previousOperand !== "") {
+      this.compute();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+    // this.previousOperand += operation.toString();
+  }
 
   compute() {}
 
   updateDisplay(number) {
     this.currentOperandTextElement.innerHTML = this.currentOperand;
+    this.previousOperandTextElement.innerHTML = this.previousOperand;
   }
 }
 
@@ -47,6 +57,13 @@ const calculator = new Calculator(
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.appendNumber(button.innerHTML);
+    calculator.updateDisplay(button.innerHTML);
+  });
+});
+
+operationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.innerHTML);
     calculator.updateDisplay(button.innerHTML);
   });
 });
