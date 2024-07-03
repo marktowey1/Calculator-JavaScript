@@ -8,7 +8,7 @@ class Calculator {
   clear() {
     this.currentOperand = "";
     this.previousOperand = "";
-    this.operation = undefined;
+    this.operation = null;
   }
   delete() {
     this.currentOperand = this.currentOperand.slice(0, -1);
@@ -31,7 +31,6 @@ class Calculator {
     this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
-    // this.previousOperand += operation.toString();
   }
 
   compute() {
@@ -57,14 +56,17 @@ class Calculator {
     }
 
     this.currentOperand = computation;
-    this.operation = undefined;
+    this.operation = "";
     this.previousOperand = "";
   }
 
-  updateDisplay(number) {
+  updateDisplay() {
     this.currentOperandTextElement.innerHTML = this.currentOperand;
-    this.previousOperandTextElement.innerHTML = this.previousOperand;
-    console.log(this.currentOperand.length);
+    if (this.operation != null) {
+      this.previousOperandTextElement.innerHTML = `${this.previousOperand} ${this.operation}`;
+    } else {
+      this.previousOperandTextElement.innerHTML = this.previousOperand;
+    }
   }
 }
 
@@ -86,14 +88,14 @@ const calculator = new Calculator(
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.appendNumber(button.innerHTML);
-    calculator.updateDisplay(button.innerHTML);
+    calculator.updateDisplay();
   });
 });
 
 operationButtons.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.chooseOperation(button.innerHTML);
-    calculator.updateDisplay(button.innerHTML);
+    calculator.updateDisplay();
   });
 });
 
