@@ -23,8 +23,20 @@ body {
 
 .display {
   grid-column: span 4;
-  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
   overflow-wrap: break-word;
+}
+#previousOperandText {
+  font-size: 1.5rem;
+}
+#currentOperandText {
+  font-size: 2rem;
 }
 
 .span-two {

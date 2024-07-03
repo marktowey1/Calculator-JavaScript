@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
     <link href="styles.css" rel="stylesheet" />
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="calculator">
-      <div class="display"></div>
+      <div class="display">
+        <div id="previousOperandText"></div>
+        <div id="currentOperandText"></div>
+      </div>
       <button class="span-two" id="clear">AC</button>
       <button id="delete">DEL</button>
       <button class="operations">÷</button>
