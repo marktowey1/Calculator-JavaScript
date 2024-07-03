@@ -10,7 +10,10 @@ class Calculator {
     this.previousOperand = "";
     this.operation = undefined;
   }
-  delete() {}
+  delete() {
+    this.currentOperand = this.currentOperand.slice(0, -1);
+    this.updateDisplay();
+  }
 
   appendNumber(number) {
     if (number === "." && this.currentOperand.includes(".")) {
@@ -61,6 +64,7 @@ class Calculator {
   updateDisplay(number) {
     this.currentOperandTextElement.innerHTML = this.currentOperand;
     this.previousOperandTextElement.innerHTML = this.previousOperand;
+    console.log(this.currentOperand.length);
   }
 }
 
@@ -100,5 +104,10 @@ equalsButton.addEventListener("click", () => {
 
 clearButton.addEventListener("click", () => {
   calculator.clear();
+  calculator.updateDisplay();
+});
+
+deleteButton.addEventListener("click", () => {
+  calculator.delete();
   calculator.updateDisplay();
 });
