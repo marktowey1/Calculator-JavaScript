@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(to right, blue, red);
+  height: 100vh;
+  margin: 0;
 }
 
 .calculator {
@@ -7,13 +13,14 @@ body {
   justify-content: center;
   align-content: center;
   min-height: 100vh;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(6, 100px);
+  grid-template-columns: repeat(4, 7rem);
+  grid-template-rows: repeat(6, 7rem);
+  padding-top: 10px;
 }
 
 .calculator > button {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 3rem;
   border: 1px solid white;
 }
 
@@ -31,14 +38,35 @@ body {
   padding: 10px;
   background-color: grey;
   overflow-wrap: break-word;
+  border: 5px solid black;
 }
 #previousOperandText {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 #currentOperandText {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .span-two {
   grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .calculator {
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 4rem);
+    grid-template-rows: repeat(6, 4rem);
+  }
+
+  .calculator > button {
+    font-size: 1.5rem;
+  }
+
+  #previousOperandText {
+    font-size: 1rem;
+  }
+  #currentOperandText {
+    font-size: 1.5rem;
+  }
 }
